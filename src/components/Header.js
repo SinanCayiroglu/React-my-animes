@@ -53,6 +53,19 @@ function Header() {
         <form action='/character' method='get'>
             <input type='submit' value="popular characters"></input>
         </form>
+        
+      </div>
+      <div className='animes'>
+        {searchData && searchData.data && searchData.data.length > 0 ? (
+          searchData.data.map(anime => (
+            <a className="anime-card" href={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+              <img src={anime.images.jpg.image_url} alt="Anime Image" />
+              <p>{anime.title}</p>
+            </a>
+          ))
+        ) : (
+          <p>No data available</p>
+        )}
       </div>
       
    </>
